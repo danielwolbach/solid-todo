@@ -1,12 +1,12 @@
 "use client";
 
 import { Container, ContainerUri } from "@ldo/solid";
-import { LoaderCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useLdo, useResource, useSolidAuth } from "@ldo/solid-react";
 import ItemCreate from "@/components/item-create";
 import ItemEntry from "@/components/item-entry";
 import Section from "@/components/section";
+import Spinner from "@/components/spinner";
 
 export default function ItemIndex() {
     const { session } = useSolidAuth();
@@ -32,13 +32,13 @@ export default function ItemIndex() {
     return (
         <Section>
             {isLoading ? (
-                <LoaderCircle size={48} className="animate-spin text-zinc-300 dark:text-zinc-600" />
+                <Spinner />
             ) : children.length === 0 ? (
-                <div className="flex w-full items-center justify-center rounded-lg border-2 border-dashed border-zinc-200 bg-zinc-50 p-5 text-zinc-400 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-500">
+                <div className="flex w-full items-center justify-center rounded-lg border-2 border-dashed border-zinc-200 bg-zinc-50 p-5 text-zinc-400 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-500">
                     No items yet.
                 </div>
             ) : (
-                <ul className="flex w-full flex-col divide-y divide-zinc-200 overflow-hidden rounded-lg bg-zinc-50 ring-1 ring-zinc-200 dark:divide-zinc-700 dark:bg-zinc-900 dark:ring-zinc-700">
+                <ul className="flex w-full flex-col divide-y divide-zinc-200 overflow-hidden rounded-lg bg-zinc-50 ring-1 ring-zinc-200 dark:divide-zinc-800 dark:bg-zinc-900 dark:ring-zinc-800">
                     {children.map((child) => (
                         <li key={child.uri}>
                             <ItemEntry uri={child.uri} />

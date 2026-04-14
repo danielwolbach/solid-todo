@@ -1,8 +1,8 @@
 "use client";
 
-import { LoaderCircle } from "lucide-react";
 import { useFormStatus } from "react-dom";
 import { cn } from "@/lib/utils";
+import Spinner from "@/components/spinner";
 
 interface Props {
     submit?: boolean;
@@ -29,7 +29,7 @@ export default function Button(props: Readonly<Props>) {
                           !isLoading && "hover:bg-zinc-700 dark:hover:bg-zinc-200",
                       )
                     : cn(
-                          "bg-zinc-50 ring-zinc-300 dark:bg-zinc-900 dark:ring-zinc-700",
+                          "bg-zinc-50 ring-zinc-200 dark:bg-zinc-900 dark:ring-zinc-800",
                           !isLoading && "hover:bg-zinc-100 dark:hover:bg-zinc-800",
                       ),
             )}
@@ -37,7 +37,7 @@ export default function Button(props: Readonly<Props>) {
             <div className={cn("flex items-center gap-1", isLoading && "text-transparent")}>{props.children}</div>
             {isLoading && (
                 <div className="absolute top-0 left-0 right-0 bottom-0 grid place-items-center">
-                    <LoaderCircle className="animate-spin text-zinc-300 dark:text-zinc-600" />
+                    <Spinner />
                 </div>
             )}
         </button>

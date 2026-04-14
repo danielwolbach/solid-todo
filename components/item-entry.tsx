@@ -34,10 +34,10 @@ export default function ItemEntry(props: Readonly<Props>) {
     if (isLoading) {
         return (
             <div className="flex items-center gap-2 bg-zinc-50 p-3 animate-pulse dark:bg-zinc-900">
-                <div className="h-5 w-5 shrink-0 rounded bg-zinc-200 dark:bg-zinc-700"></div>
-                <div className="mr-20 h-5 flex-1 rounded bg-zinc-200 dark:bg-zinc-700"></div>
+                <div className="h-5 w-5 shrink-0 rounded bg-zinc-200 dark:bg-zinc-800"></div>
+                <div className="mr-20 h-5 flex-1 rounded bg-zinc-200 dark:bg-zinc-800"></div>
                 <div className="h-11 w-11 rounded-full shrink-0 grid place-items-center">
-                    <div className="h-7 w-7 rounded-full shrink-0 bg-zinc-200 dark:bg-zinc-700"></div>
+                    <div className="h-7 w-7 rounded-full shrink-0 bg-zinc-200 dark:bg-zinc-800"></div>
                 </div>
             </div>
         );

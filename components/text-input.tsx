@@ -22,7 +22,7 @@ export default function TextInput(props: Readonly<Props>) {
                 placeholder={props.placeholder}
                 defaultValue={props.defaultValue}
                 disabled={props.disabled}
-                className="rounded-lg bg-zinc-50 p-3 ring-1 ring-zinc-300 transition ring-inset placeholder:text-zinc-300 focus:ring-2 focus:ring-zinc-800 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 dark:bg-zinc-900 dark:ring-zinc-700 dark:placeholder:text-zinc-600 dark:focus:ring-zinc-200"
+                className="rounded-lg bg-zinc-50 p-3 ring-1 ring-zinc-200 transition ring-inset placeholder:text-zinc-300 focus:ring-2 focus:ring-zinc-800 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 dark:bg-zinc-900 dark:ring-zinc-800 dark:placeholder:text-zinc-600 dark:focus:ring-zinc-200"
             />
         </InputField>
     );

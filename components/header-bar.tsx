@@ -5,7 +5,7 @@ import Auth from "@/components/auth";
 
 export default function HeaderBar() {
     return (
-        <header className="grid w-full place-items-center bg-zinc-50 ring-1 ring-zinc-300 dark:bg-zinc-900 dark:ring-zinc-700">
+        <header className="grid w-full place-items-center bg-zinc-50 ring-1 ring-zinc-200 dark:bg-zinc-900 dark:ring-zinc-800">
             <div className="flex items-center justify-between max-w-5xl w-full p-3">
                 <Section horizontal>
                     <CheckSquare className="h-5 w-5" />

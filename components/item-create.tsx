@@ -17,7 +17,7 @@ export default function ItemCreate(props: Readonly<Props>) {
 
     return (
         <form action={isLoading ? undefined : createItem} className="w-full">
-            <Section horizontal className="w-full">
+            <Section horizontal className="w-full gap-4">
                 <TextInput name="name" placeholder="Enter something..." disabled={isLoading} />
                 <Button submit loading={isLoading}>
                     <PlusCircle height={20} />
