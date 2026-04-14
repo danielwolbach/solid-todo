@@ -3,7 +3,7 @@ import { Container, Leaf, Resource } from "@ldo/solid";
 import { Item } from "@/lib/ldo/todo.typings";
 import { ItemShapeType } from "@/lib/ldo/todo.shapeTypes";
 import { Trash2 } from "lucide-react";
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useLdo, useResource, useSubject } from "@ldo/solid-react";
 import Button from "@/components/button";
 import CheckboxInput from "@/components/checkbox-input";
@@ -16,13 +16,40 @@ export default function ItemEntry(props: Readonly<Props>) {
     const { getResource, changeData, commitData } = useLdo();
     const resource = useResource(props.uri) as Resource;
     const model = useSubject(ItemShapeType, props.uri) as Item | undefined;
+    const [draftName, setDraftName] = useState(model?.name ?? "");
 
-    const toggleItem = useCallback(async () => {
+    useEffect(() => {
+        setDraftName(model?.name ?? "");
+    }, [model?.name]);
+
+    const toggleItem = useCallback(
+        async (checked: boolean) => {
+            if (!model) return;
+            const edit = changeData(model, getResource(props.uri));
+            edit.done = checked;
+            await commitData(edit);
+        },
+        [model, changeData, commitData, getResource, props.uri],
+    );
+
+    const saveItemName = useCallback(async () => {
         if (!model) return;
+
+        const nextName = draftName.trim();
+
+        if (nextName === "") {
+            setDraftName(model.name);
+            return;
+        }
+
+        if (nextName === model.name) {
+            return;
+        }
+
         const edit = changeData(model, getResource(props.uri));
-        edit.done = !model.done;
+        edit.name = nextName;
         await commitData(edit);
-    }, [model, changeData, commitData, getResource, props.uri]);
+    }, [changeData, commitData, draftName, getResource, model, props.uri]);
 
     const deleteItem = useCallback(async () => {
         const itemResource = getResource(props.uri) as Container | Leaf;
@@ -46,11 +73,29 @@ export default function ItemEntry(props: Readonly<Props>) {
     return (
         <div className="flex items-center gap-2 bg-zinc-50 p-3 dark:bg-zinc-900">
             <CheckboxInput checked={model?.done ?? false} onChange={toggleItem} />
-            <span
-                className={cn("flex-1 transition-all", model?.done && "line-through text-zinc-400 dark:text-zinc-500")}
-            >
-                {model?.name}
-            </span>
+            <input
+                value={draftName}
+                onChange={(event) => setDraftName(event.target.value)}
+                onFocus={(event) => {
+                    event.currentTarget.select();
+                }}
+                onClick={(event) => {
+                    event.currentTarget.select();
+                }}
+                onBlur={() => {
+                    void saveItemName();
+                }}
+                onKeyDown={(event) => {
+                    if (event.key === "Enter") {
+                        event.preventDefault();
+                        event.currentTarget.blur();
+                    }
+                }}
+                className={cn(
+                    "min-w-0 flex-1 border-b border-transparent bg-transparent py-1 text-inherit transition focus:border-zinc-200 focus:outline-none dark:focus:border-zinc-800",
+                    model?.done && "line-through text-zinc-400 dark:text-zinc-500",
+                )}
+            />
             <Button onClick={deleteItem}>
                 <Trash2 height={20} />
             </Button>

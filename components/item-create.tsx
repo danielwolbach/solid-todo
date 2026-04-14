@@ -44,7 +44,7 @@ export default function ItemCreate(props: Readonly<Props>) {
         const itemResource = (result as Extract<typeof result, { isError: false }>).resource as Resource;
         const post = createData(ItemShapeType, itemResource.uri, itemResource);
 
-        post.name = name;
+        post.name = name.trim();
         post.done = false;
 
         const commitResult = await commitData(post);

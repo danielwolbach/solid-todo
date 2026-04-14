@@ -12,7 +12,7 @@ export default function Section(props: Readonly<Props>) {
             className={cn(
                 props.horizontal
                     ? "flex flex-row gap-2 items-center"
-                    : "flex flex-col gap-4 items-center max-w-xl w-full px-2",
+                    : "flex flex-col gap-4 items-center max-w-xl w-full px-4",
                 props.className,
             )}
         >

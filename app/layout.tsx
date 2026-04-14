@@ -17,7 +17,7 @@ export interface Props {
 export default function Layout(props: Readonly<Props>) {
     return (
         <html lang="en" className={cn(INTER.variable, MONTSERRAT.variable)}>
-            <body className="min-h-full flex flex-col gap-8 items-center bg-white font-sans text-zinc-800 dark:bg-zinc-950 dark:text-zinc-100 pb-8">
+            <body className="min-h-full flex flex-col gap-4 items-center bg-white font-sans text-zinc-800 dark:bg-zinc-950 dark:text-zinc-100 pb-4">
                 <LdoContext>
                     <HeaderBar />
                     {props.children}
