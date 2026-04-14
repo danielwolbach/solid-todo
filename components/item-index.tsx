@@ -32,7 +32,7 @@ export default function ItemIndex() {
     return (
         <Section>
             {isLoading ? (
-                <Spinner />
+                <Spinner size={48} />
             ) : children.length === 0 ? (
                 <div className="flex w-full items-center justify-center rounded-lg border-2 border-dashed border-zinc-200 bg-zinc-50 p-5 text-zinc-400 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-500">
                     No items yet.

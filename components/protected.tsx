@@ -16,7 +16,7 @@ export default function Protected(props: Readonly<Props>) {
     if (!ranInitialAuthCheck) {
         return (
             <Section>
-                <Spinner size={64} />
+                <Spinner size={48} />
             </Section>
         );
     }
