@@ -1,0 +1,48 @@
+{
+    "name": "solid-todo",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "build:ldo": "ldo build --input lib/shapes --output lib/ldo",
+        "build": "ldo build --input lib/shapes --output lib/ldo && next build",
+        "dev": "next dev",
+        "fmt": "prettier --write \"**/*.{js,ts,jsx,tsx,json,md}\"",
+        "lint": "prettier --check \"**/*.{js,ts,jsx,tsx,json,md}\" && eslint",
+        "start": "next start"
+    },
+    "dependencies": {
+        "@ldo/ldo": "1.0.0-alpha.46",
+        "@ldo/solid-react": "1.0.0-alpha.46",
+        "@ldo/solid": "1.0.0-alpha.1",
+        "@tailwindcss/postcss": "^4.2.2",
+        "clsx": "^2.1.1",
+        "lucide-react": "^1.8.0",
+        "next": "^16.2.3",
+        "postcss": "^8.5.9",
+        "react-dom": "^19.2.5",
+        "react": "^19.2.5",
+        "tailwind-merge": "^3.5.0",
+        "tailwindcss": "^4.2.2",
+        "uuid": "^13.0.0"
+    },
+    "devDependencies": {
+        "@ldo/cli": "1.0.0-alpha.46",
+        "@types/node": "25.6.0",
+        "@types/react": "19.2.14",
+        "@types/shexj": "^2.1.7",
+        "babel-plugin-react-compiler": "^1.0.0",
+        "eslint-config-next": "^16.2.3",
+        "eslint": "^9.39.4",
+        "prettier": "^3.8.2",
+        "typescript": "6.0.2"
+    },
+    "overrides": {
+        "serialize-javascript": "^7.0.5",
+        "cross-spawn": "^7.0.6"
+    },
+    "prettier": {
+        "printWidth": 120,
+        "proseWrap": "always",
+        "tabWidth": 4
+    }
+}

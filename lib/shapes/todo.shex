@@ -1,0 +1,10 @@
+PREFIX : <urn:solid-todo:/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+:Item {
+  :name xsd:string
+    // rdfs:comment "Human-readable title of the todo item" ;
+  :done xsd:boolean
+    // rdfs:comment "Whether the todo item has been completed" ;
+}

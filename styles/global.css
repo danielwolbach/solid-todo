@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+@theme {
+    --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    --font-heading: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+    ::selection {
+        background-color: #d4d4d8;
+        color: #18181b;
+    }
+
+    ::-moz-selection {
+        background-color: #d4d4d8;
+        color: #18181b;
+    }
+}
