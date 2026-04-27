@@ -1,36 +1,32 @@
 "use client";
 
-import { LogIn, LogOut } from "lucide-react";
+import { Database, LogIn, LogOut } from "lucide-react";
 import { useSolidAuth } from "@ldo/solid-react";
-import Button from "@/components/button";
+import LinkButton from "@/components/link-button";
+import Section from "@/components/section";
 
 export default function Auth() {
-    const { session, login, logout, ranInitialAuthCheck } = useSolidAuth();
+    const { session, ranInitialAuthCheck } = useSolidAuth();
 
     if (!session.isLoggedIn) {
         return (
-            <Button
-                loading={!ranInitialAuthCheck}
-                onClick={async () => {
-                    try {
-                        const issuer = prompt("Enter your Solid Issuer", "https://solidcommunity.net/");
-                        if (!issuer) return;
-                        await login(issuer, { clientName: "Solid Todo" });
-                    } catch {
-                        alert("Failed to sign in.");
-                    }
-                }}
-            >
+            <LinkButton loading={!ranInitialAuthCheck} href="/auth">
                 <LogIn height={20} />
                 Sign in
-            </Button>
+            </LinkButton>
         );
     }
 
     return (
-        <Button onClick={logout}>
-            <LogOut height={20} />
-            Sign out
-        </Button>
+        <Section horizontal>
+            <LinkButton href="/auth">
+                <LogOut height={20} />
+                Sign out
+            </LinkButton>
+            <LinkButton href="/pod">
+                <Database height={20} />
+                Change Pod
+            </LinkButton>
+        </Section>
     );
 }
