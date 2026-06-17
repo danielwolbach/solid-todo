@@ -5,7 +5,7 @@ Next.js web application.
 
 The app can be accessed at [https://solid-todo.vercel.app](https://solid-todo.vercel.app).
 
-Documentation can be found in the [docs](./docs/index) directory.
+Documentation can be found in the [docs](./docs/) directory.
 
 ## Quick Start
 
