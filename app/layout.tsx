@@ -5,6 +5,7 @@ import { Metadata } from "next";
 import HeaderBar from "@/components/header-bar";
 import LdoContext from "@/components/ldo-context";
 import { PodProvider } from "@/components/pod-context";
+import { AppViewProvider } from "@/components/app-view-context";
 
 export const metadata: Metadata = {
     title: "Solid Todo",
@@ -21,8 +22,10 @@ export default function Layout(props: Readonly<Props>) {
             <body className="min-h-full flex flex-col gap-4 items-center bg-white font-sans text-zinc-800 dark:bg-zinc-950 dark:text-zinc-100 pb-4">
                 <LdoContext>
                     <PodProvider>
-                        <HeaderBar />
-                        {props.children}
+                        <AppViewProvider>
+                            <HeaderBar />
+                            {props.children}
+                        </AppViewProvider>
                     </PodProvider>
                 </LdoContext>
             </body>

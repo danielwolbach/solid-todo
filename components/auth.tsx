@@ -2,31 +2,33 @@
 
 import { Database, LogIn, LogOut } from "lucide-react";
 import { useSolidAuth } from "@ldo/solid-react";
-import LinkButton from "@/components/link-button";
+import Button from "@/components/button";
 import Section from "@/components/section";
+import { useAppView } from "@/components/app-view-context";
 
 export default function Auth() {
     const { session, ranInitialAuthCheck } = useSolidAuth();
+    const { setView } = useAppView();
 
     if (!session.isLoggedIn) {
         return (
-            <LinkButton loading={!ranInitialAuthCheck} href="/auth">
+            <Button loading={!ranInitialAuthCheck} onClick={() => setView("auth")}>
                 <LogIn height={20} />
                 Sign in
-            </LinkButton>
+            </Button>
         );
     }
 
     return (
         <Section horizontal>
-            <LinkButton href="/auth">
+            <Button onClick={() => setView("auth")}>
                 <LogOut height={20} />
                 Sign out
-            </LinkButton>
-            <LinkButton href="/pod">
+            </Button>
+            <Button onClick={() => setView("pod")}>
                 <Database height={20} />
                 Change Pod
-            </LinkButton>
+            </Button>
         </Section>
     );
 }

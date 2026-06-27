@@ -1,10 +1,5 @@
-import ItemIndex from "../components/item-index";
-import Protected from "../components/protected";
+import AppShell from "@/components/app-shell";
 
 export default function Page() {
-    return (
-        <Protected>
-            <ItemIndex />
-        </Protected>
-    );
+    return <AppShell />;
 }

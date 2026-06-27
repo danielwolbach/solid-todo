@@ -1,7 +1,7 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useSolidAuth } from "@ldo/solid-react";
+import { useAppView } from "@/components/app-view-context";
 import Button from "@/components/button";
 import Form from "@/components/form";
 import Heading from "@/components/heading";
@@ -11,7 +11,7 @@ import TextInput from "@/components/text-input";
 
 export default function AuthForm() {
     const { session, login, logout, ranInitialAuthCheck } = useSolidAuth();
-    const router = useRouter();
+    const { setView } = useAppView();
 
     if (!ranInitialAuthCheck) {
         return (
@@ -47,7 +47,7 @@ export default function AuthForm() {
             const issuer = formData.get("issuer")?.toString();
             if (!issuer) return;
             await login(issuer, { clientName: "Solid Todo" });
-            router.push("/");
+            setView("todos");
         } catch {
             alert("Failed to sign in.");
         }
@@ -55,5 +55,6 @@ export default function AuthForm() {
 
     async function signOut() {
         await logout();
+        setView("auth");
     }
 }

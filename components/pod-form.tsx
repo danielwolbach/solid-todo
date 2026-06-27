@@ -1,6 +1,7 @@
 "use client";
 
 import { usePodContext } from "@/components/pod-context";
+import { useAppView } from "@/components/app-view-context";
 import Button from "@/components/button";
 import Form from "@/components/form";
 import Heading from "@/components/heading";
@@ -8,8 +9,8 @@ import Section from "@/components/section";
 import TextInput from "./text-input";
 
 export default function PodForm() {
-    const router = require("next/navigation").useRouter();
     const { pod, setPod } = usePodContext();
+    const { setView } = useAppView();
 
     return (
         <Section>
@@ -29,7 +30,6 @@ export default function PodForm() {
         } else {
             setPod(podUrl);
         }
-        await router.push(`/`);
-        await router.refresh();
+        setView("todos");
     }
 }
